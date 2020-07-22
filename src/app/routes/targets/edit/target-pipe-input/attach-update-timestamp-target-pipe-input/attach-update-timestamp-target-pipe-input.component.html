@@ -1,0 +1,21 @@
+<ng-container [formGroup]="form">
+  <nz-form-item>
+    <nz-form-label [nzLg]="2" nzFor="field" nzRequired>Field Name</nz-form-label>
+    <nz-form-control [nzLg]="10">
+      <input nz-input formControlName="field" required />
+    </nz-form-control>
+    <nz-form-label [nzLg]="2" nzFor="indexed" nzRequired>Indexed</nz-form-label>
+    <nz-form-control [nzLg]="2">
+      <nz-switch formControlName="indexed"></nz-switch>
+    </nz-form-control>
+    <ng-container *ngIf="form.get('indexed').value">
+      <nz-form-label [nzLg]="2" nzFor="ascending" nzRequired>Index Order</nz-form-label>
+      <nz-form-control [nzLg]="6">
+        <nz-radio-group formControlName="ascending" required>
+          <label nz-radio-button [nzValue]="true">Ascending</label>
+          <label nz-radio-button [nzValue]="false">Descending</label>
+        </nz-radio-group>
+      </nz-form-control>
+    </ng-container>
+  </nz-form-item>
+</ng-container>

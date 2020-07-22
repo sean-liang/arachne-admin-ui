@@ -1,0 +1,78 @@
+<page-header [title]="target.id ? 'Edit ' + target.name : 'Add New Target'" [breadcrumb]="breadcrumb">
+  <ng-template #breadcrumb>
+    <nz-breadcrumb>
+      <nz-breadcrumb-item><a [routerLink]="['/targets']">Target List</a></nz-breadcrumb-item>
+      <nz-breadcrumb-item>Edit Target</nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </ng-template>
+</page-header>
+<nz-card nzTitle="Target Info" *ngIf="ready">
+  <form nz-form [formGroup]="targetForm">
+    <nz-card nzType="inner" nzTitle="Basic">
+      <nz-form-item>
+        <nz-form-label [nzLg]="2" nzRequired nzFor="name">Name</nz-form-label>
+        <nz-form-control [nzLg]="22">
+          <input nz-input formControlName="name" required />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzLg]="2" nzRequired nzFor="weight">Weight</nz-form-label>
+        <nz-form-control [nzLg]="2">
+          <nz-input-number formControlName="weight" [nzMin]="1" [nzMax]="10000" [nzStep]="1" required> </nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzLg]="2" nzRequired nzFor="retryStrategy">Retry Strategy</nz-form-label>
+        <nz-form-control [nzLg]="4">
+          <nz-radio-group formControlName="retryStrategy" required>
+            <label nz-radio-button [nzValue]="item.value" *ngFor="let item of retryStrategyOptions">{{ item.label }}</label>
+          </nz-radio-group>
+        </nz-form-control>
+        <ng-container *ngIf="targetForm.controls.retryStrategy.value != 'NEVER'">
+          <nz-form-label [nzLg]="2" nzRequired nzFor="retries">Retries</nz-form-label>
+          <nz-form-control [nzLg]="2">
+            <nz-input-number formControlName="retries" [nzMin]="1" [nzMax]="100" [nzStep]="1" required> </nz-input-number>
+          </nz-form-control>
+        </ng-container>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzLg]="2" nzRequired nzFor="repetition">Repetition</nz-form-label>
+        <nz-form-control [nzLg]="4">
+          <nz-radio-group formControlName="repetition" (ngModelChange)="onRepetitionChanged($event)" required>
+            <label nz-radio-button [nzValue]="item.value" *ngFor="let item of repetitionOptions">{{ item.label }}</label>
+          </nz-radio-group>
+        </nz-form-control>
+        <ng-container *ngIf="targetForm.controls.repetition.value !== 'NEVER'">
+          <nz-form-label [nzLg]="2" nzRequired nzFor="repetitionConfig">Repetition Config</nz-form-label>
+          <nz-form-control [nzLg]="22" [nzExtra]="repetitionConfigTip">
+            <input nz-input formControlName="repetitionConfig" required />
+          </nz-form-control>
+          <ng-template #repetitionConfigTip>
+            <ng-container *ngIf="targetForm.controls.repetition.value === 'INTERVAL'">
+              Minutes
+            </ng-container>
+            <ng-container *ngIf="targetForm.controls.repetition.value === 'CRON'">
+              Seconds Minutes Hours Day-of-month Month Day-of-Week Year(Optional),
+              <a target="_blank" href="https://www.quartz-scheduler.org/api/2.1.7/org/quartz/CronExpression.html">More...</a>
+            </ng-container>
+          </ng-template>
+        </ng-container>
+      </nz-form-item>
+      <app-worker-select-input formControlName="workers"></app-worker-select-input>
+    </nz-card>
+    <nz-card nzType="inner" nzTitle="Action Provider">
+      <app-target-action-provider-input formControlName="provider"></app-target-action-provider-input>
+    </nz-card>
+    <nz-card nzType="inner" nzTitle="Store">
+      <app-target-store-input formControlName="store"></app-target-store-input>
+    </nz-card>
+    <nz-card nzType="inner" nzTitle="Pipes">
+      <app-target-pipe-input formControlName="pipes"></app-target-pipe-input>
+    </nz-card>
+    <nz-form-item nz-row>
+      <nz-form-control>
+        <button nz-button nzType="primary" (click)="save()">Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-card>

@@ -1,0 +1,11 @@
+<div class="modal-header">
+  <div class="modal-title">Add New User</div>
+</div>
+<sf #sf mode="edit" [schema]="schema" [ui]="ui" [formData]="i" button="none">
+  <div class="modal-footer">
+    <button nz-button type="button" (click)="close()">Close</button>
+    <button nz-button type="submit" nzType="primary" (click)="save(sf.value)" [disabled]="!sf.valid" [nzLoading]="http.loading">
+      Save
+    </button>
+  </div>
+</sf>

@@ -1,0 +1,14 @@
+<ng-container [formGroup]="storeForm">
+  <nz-form-item>
+    <nz-form-label [nzLg]="2" nzRequired nzFor="type">Type</nz-form-label>
+    <nz-form-control [nzLg]="22">
+      <nz-select formControlName="type" (ngModelChange)="onTypeChange($event)" required>
+        <nz-option *ngFor="let item of storeOptions" [nzLabel]="item.label" [nzValue]="item.value"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <app-mongo-document-target-store-input
+    formControlName="variables"
+    *ngIf="storeForm.get('type').value === 'MONGO_DOCUMENT'"
+  ></app-mongo-document-target-store-input>
+</ng-container>

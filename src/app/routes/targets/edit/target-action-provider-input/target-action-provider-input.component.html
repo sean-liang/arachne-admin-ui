@@ -1,0 +1,19 @@
+<ng-container [formGroup]="providerForm">
+  <nz-form-item>
+    <nz-form-label [nzLg]="2" nzRequired nzFor="type">Type</nz-form-label>
+    <nz-form-control [nzLg]="22">
+      <nz-select formControlName="type" (ngModelChange)="onTypeChange($event)" required>
+        <nz-option *ngFor="let item of providerOptions" [nzLabel]="item.label" [nzValue]="item.value"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <app-template-generated-target-action-provider-input
+    formControlName="variables"
+    *ngIf="providerForm.get('type').value === 'TEMPLATE_GENERATED'"
+  >
+  </app-template-generated-target-action-provider-input>
+  <app-mongo-collection-target-action-provider-input
+    formControlName="variables"
+    *ngIf="providerForm.get('type').value === 'MONGO_COLLECTION'"
+  ></app-mongo-collection-target-action-provider-input>
+</ng-container>

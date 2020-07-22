@@ -1,0 +1,17 @@
+<nz-form-item>
+  <nz-form-label [nzLg]="2" nzRequired nzFor="workers">Workers</nz-form-label>
+  <nz-form-control [nzLg]="22">
+    <nz-select
+      [formControl]="workerForm"
+      nzMode="multiple"
+      nzAllowClear
+      nzShowSearch
+      nzServerSearch
+      [required]="required"
+      (nzOnSearch)="onSearch($event)"
+      nzPlaceHolder="Type name or tag to search..."
+    >
+      <nz-option *ngFor="let item of avaliableWorkers" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
+    </nz-select>
+  </nz-form-control>
+</nz-form-item>

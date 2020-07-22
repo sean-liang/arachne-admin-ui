@@ -1,0 +1,39 @@
+<ng-container [formGroup]="form">
+  <nz-form-item>
+    <nz-form-label [nzLg]="2" nzFor="start" nzRequired>Start</nz-form-label>
+    <nz-form-control [nzLg]="2">
+      <nz-input-number formControlName="start" required> </nz-input-number>
+    </nz-form-control>
+    <nz-form-label [nzLg]="2" nzFor="step" nzRequired>Step</nz-form-label>
+    <nz-form-control [nzLg]="2">
+      <nz-input-number formControlName="step" required> </nz-input-number>
+    </nz-form-control>
+    <nz-form-label [nzLg]="2" nzFor="end">End</nz-form-label>
+    <nz-form-control [nzLg]="2">
+      <nz-input-number formControlName="end"> </nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+  <ng-container formGroupName="template">
+    <nz-form-item>
+      <nz-form-label [nzLg]="2" nzRequired nzFor="method">Method</nz-form-label>
+      <nz-form-control [nzLg]="22">
+        <nz-radio-group formControlName="method" required>
+          <label nz-radio-button [nzValue]="item.value" *ngFor="let item of httpMethodOptions">{{ item.label }}</label>
+        </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzLg]="2" nzRequired nzFor="url">URL Template</nz-form-label>
+      <nz-form-control [nzLg]="22">
+        <input nz-input formControlName="url" placeholder="Use {{ URL_TEMPLATE_PLACEHOLDER }} for index placeholder." required />
+      </nz-form-control>
+    </nz-form-item>
+    <app-key-value-list-input formControlName="headers" fieldname="Request Headers"></app-key-value-list-input>
+    <nz-form-item>
+      <nz-form-label [nzLg]="2" nzFor="body">Request Body</nz-form-label>
+      <nz-form-control [nzLg]="22">
+        <textarea rows="4" nz-input formControlName="body"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+  </ng-container>
+</ng-container>

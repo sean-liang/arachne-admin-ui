@@ -1,0 +1,14 @@
+<ng-container [formGroup]="form">
+  <nz-form-item>
+    <nz-form-label [nzLg]="2" nzRequired nzFor="collection">Collection</nz-form-label>
+    <nz-form-control [nzLg]="22">
+      <input nz-input formControlName="collection" required />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzLg]="2" nzRequired nzFor="idField">ID Field Name</nz-form-label>
+    <nz-form-control [nzLg]="22">
+      <input nz-input formControlName="idField" required />
+    </nz-form-control>
+  </nz-form-item>
+</ng-container>
