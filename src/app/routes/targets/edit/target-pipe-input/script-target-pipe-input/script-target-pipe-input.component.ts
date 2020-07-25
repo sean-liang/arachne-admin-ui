@@ -1,34 +1,48 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
-import { FormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DictionaryService } from '../../../../../core/dictionary/dictionary.service';
+import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'app-attach-update-timestamp-target-pipe-input',
-  templateUrl: './attach-update-timestamp-target-pipe-input.component.html',
+  selector: 'app-script-target-pipe-input',
+  templateUrl: './script-target-pipe-input.component.html',
   styles: [],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AttachUpdateTimestampTargetPipeInputComponent),
+      useExisting: forwardRef(() => ScriptTargetPipeInputComponent),
       multi: true,
     },
   ],
 })
-export class AttachUpdateTimestampTargetPipeInputComponent implements OnInit {
+export class ScriptTargetPipeInputComponent implements OnInit {
   form = this.fb.group({
-    field: [''],
-    indexed: [false],
-    ascending: [true],
+    content: [
+      `{
+    initialize: function() { },
+    destroy: function() { },
+    proceed: function(stream, feedback, context) {
+      throw new DropFeedbackException();
+    }
+}`,
+    ],
   });
+
+  codeMirrorOptions = {
+    lineNumbers: true,
+    theme: 'material',
+    mode: 'javascript',
+  };
+
   disabled = false;
+
+  constructor(private fb: FormBuilder) {}
+
   onChange = (val: any) => {};
   onTouched = () => {};
-
-  constructor(private fb: FormBuilder, private dict: DictionaryService) {}
 
   ngOnInit(): void {
     this.form.valueChanges.subscribe((val) => {
       this.onChange(val);
+      console.log(val);
       this.onTouched();
     });
   }

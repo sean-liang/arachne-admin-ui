@@ -62,5 +62,5 @@ export const DICT_DATA: any = {
       color: 'green',
     },
   ],
-  'target.pipe': ['ATTACH_UPDATE_TIMESTAMP_PIPE'],
+  'target.pipe': ['ATTACH_UPDATE_TIMESTAMP_PIPE', 'SCRIPT_PIPE'],
 };

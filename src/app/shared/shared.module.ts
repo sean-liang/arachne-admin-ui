@@ -15,8 +15,9 @@ import { SHARED_DELON_MODULES } from './shared-delon.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 
 // #region third libs
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
-const THIRDMODULES = [];
+const THIRDMODULES = [CodemirrorModule];
 
 // #endregion
 

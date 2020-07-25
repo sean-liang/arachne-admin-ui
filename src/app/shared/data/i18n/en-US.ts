@@ -23,6 +23,7 @@ export const I18N_EN_US: any = {
   'dict.target.actionprovider.MONGO_COLLECTION': 'Mongo Colleciton',
   'dict.target.store.MONGO_DOCUMENT': 'Mongo Document',
   'dict.target.pipe.ATTACH_UPDATE_TIMESTAMP_PIPE': 'Attach Update Timestamp',
+  'dict.target.pipe.SCRIPT_PIPE': 'Scripting Pipe',
   'menu.search.placeholder': 'Search for people, file, photos...',
   'menu.fullscreen': 'Fullscreen',
   'menu.fullscreen.exit': 'Exit Fullscreen',

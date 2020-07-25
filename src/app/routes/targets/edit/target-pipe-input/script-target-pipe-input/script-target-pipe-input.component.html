@@ -1,0 +1,8 @@
+<ng-container [formGroup]="form">
+  <nz-form-item>
+    <nz-form-label [nzLg]="2" nzFor="content" nzRequired>Script</nz-form-label>
+    <nz-form-control [nzLg]="22">
+      <ngx-codemirror formControlName="content" [options]="codeMirrorOptions" required> </ngx-codemirror>
+    </nz-form-control>
+  </nz-form-item>
+</ng-container>

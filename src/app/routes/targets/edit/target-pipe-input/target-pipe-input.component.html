@@ -21,6 +21,8 @@
             *ngIf="item.get('type').value === 'ATTACH_UPDATE_TIMESTAMP_PIPE'"
           >
           </app-attach-update-timestamp-target-pipe-input>
+          <app-script-target-pipe-input formControlName="variables" *ngIf="item.get('type').value === 'SCRIPT_PIPE'">
+          </app-script-target-pipe-input>
         </div>
         <ul nz-list-item-actions>
           <nz-list-item-action>

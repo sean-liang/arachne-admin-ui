@@ -9,6 +9,8 @@ preloaderFinished();
 
 import { hmrBootstrap } from './hmr';
 
+import 'codemirror/mode/javascript/javascript';
+
 if (environment.production) {
   enableProdMode();
 }
@@ -18,7 +20,7 @@ const bootstrap = () => {
     .bootstrapModule(AppModule, {
       defaultEncapsulation: ViewEncapsulation.Emulated,
     })
-    .then(res => {
+    .then((res) => {
       if ((window as any).appBootstrap) {
         (window as any).appBootstrap();
       }
