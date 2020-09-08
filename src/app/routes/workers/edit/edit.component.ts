@@ -15,11 +15,11 @@ export class WorkersEditComponent implements OnInit {
   schema: SFSchema = {
     properties: {
       name: { type: 'string', title: 'Name' },
-      engine: {
+      protocol: {
         type: 'string',
-        title: 'Engine',
-        default: 'HTTP_PULL',
-        enum: this.dict.getItemsAsLabeledEnum('worker.engine'),
+        title: 'Protocol',
+        default: 'HTTP',
+        enum: this.dict.getItemsAsLabeledEnum('worker.protocol'),
         ui: { widget: 'select' },
       },
       status: {
@@ -33,7 +33,17 @@ export class WorkersEditComponent implements OnInit {
           buttonStyle: 'solid',
         },
       },
-      batchSize: { type: 'number', title: 'Batch Size', minimum: 1, maximum: 100, default: 10 },
+      managed: { type: 'boolean', title: 'Managed', default: true},
+      batchSize: {
+        type: 'number', 
+        title: 'Batch Size', 
+        minimum: 1, 
+        maximum: 100, 
+        default: 10,
+        ui: {
+          visibleIf: {managed: [true]}
+        }
+      },
       tags: {
         type: 'string',
         title: 'Tags',
@@ -44,7 +54,7 @@ export class WorkersEditComponent implements OnInit {
         },
       },
     },
-    required: ['name', 'engine', 'status', 'batchSize'],
+    required: ['name', 'protocol', 'status', 'batchSize'],
   };
   ui: SFUISchema = {
     '*': {

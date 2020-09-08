@@ -24,9 +24,9 @@ export const DICT_DATA: any = {
     { key: 'NORMAL', color: 'blue' },
     { key: 'DISABLED', color: 'red' },
   ],
-  'worker.engine': [
-    { key: 'HTTP_PULL', color: 'blue' },
-    { key: 'WS_PUSH', color: 'green' },
+  'worker.protocol': [
+    { key: 'HTTP', color: 'blue' },
+    { key: 'WEBSOCKET', color: 'green' },
   ],
   'target.status': [
     { key: 'SCHEDULED', color: 'purple' },

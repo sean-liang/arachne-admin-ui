@@ -17,8 +17,9 @@ export class WorkersListComponent implements OnInit {
   columns: STColumn[] = [
     { title: 'Name', index: 'name' },
     { title: 'Status', type: 'tag', index: 'status', tag: this.dict.getItemsAsTag('worker.status') },
-    { title: 'Engine', type: 'tag', index: 'engine', tag: this.dict.getItemsAsTag('worker.engine') },
+    { title: 'Protocol', type: 'tag', index: 'protocol', tag: this.dict.getItemsAsTag('worker.protocol') },
     { title: 'Tags', index: 'tags' },
+    { title: 'Managed', type: 'yn', index: 'managed' },
     { title: 'Batch Size', type: 'number', index: 'batchSize' },
     { title: 'Last Request IP', index: 'lastRequestIp' },
     { title: 'Last Request Time', type: 'date', index: 'lastRequestAt', dateFormat: 'yyyy-MM-dd HH:mm' },

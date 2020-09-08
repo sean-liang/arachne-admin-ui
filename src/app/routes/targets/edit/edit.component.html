@@ -48,12 +48,9 @@
             <input nz-input formControlName="repetitionConfig" required />
           </nz-form-control>
           <ng-template #repetitionConfigTip>
-            <ng-container *ngIf="targetForm.controls.repetition.value === 'INTERVAL'">
-              Minutes
-            </ng-container>
+            <ng-container *ngIf="targetForm.controls.repetition.value === 'INTERVAL'"> Minutes </ng-container>
             <ng-container *ngIf="targetForm.controls.repetition.value === 'CRON'">
-              Seconds Minutes Hours Day-of-month Month Day-of-Week Year(Optional),
-              <a target="_blank" href="https://www.quartz-scheduler.org/api/2.1.7/org/quartz/CronExpression.html">More...</a>
+              Minutes Hours Day-of-month Month Day-of-Week
             </ng-container>
           </ng-template>
         </ng-container>

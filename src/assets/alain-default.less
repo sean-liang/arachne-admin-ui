@@ -2822,6 +2822,10 @@ this.tinycolor = tinycolor;
       }
       return ret;
     }
+
+    this.genComment = function(value, ...comments) {
+      return value + '; /* AUTOGENERATE: ' + comments.join('|SPLIT|') + '*/';
+    }
   })()`;
 }
 .freakMixin();
@@ -2994,16 +2998,13 @@ this.tinycolor = tinycolor;
 @zindex-fixed:      @zindex-base;
 @zindex:            @zindex-base;
 
-@overflows:     auto, hidden;
-@positions:     static, relative, absolute, fixed, sticky;
-
 // 文本
 @text-xs:       @font-size-base - 2;  // 12px
 @text-sm:       @font-size-base + 0;  // 14px
 @text-md:       @font-size-base + 2;  // 16px
 @text-lg:       @font-size-base + 4;  // 18px
 @text-xl:       @font-size-base + 8;  // 22px
-@text-xxl:      @font-size-base + 12; // 26px
+@text-xxl:      @font-size-base + 14; // 28px
 
 // icon
 @icon-sm:       @font-size-base * 2;  // 14px * 2 = 28px
@@ -3106,7 +3107,8 @@ this.tinycolor = tinycolor;
 @forced-turn-off-nz-modal-animation-enabled: false;
 
 @sf-title-text-align: left;
-@sf-optional-color: rgba(0, 0, 0, 0.45);
+@sf-optional-color: rgba(0, 0, 0, 0.35);
+@sf-optional-margin: 2px;
 @sf-inline-ant-select-min-width: 100px;
 @sf-widget-array-type-card-remove-bg: rgba(0, 0, 0, 0.26);
 @sf-widget-array-transfer-bg: #fff;
@@ -9808,7 +9810,7 @@ fieldset {
   box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
 }
 .sf__optional {
-  color: rgba(0, 0, 0, 0.45);
+  color: rgba(0, 0, 0, 0.35);
 }
 .sf__array-container nz-card .sf__array-remove {
   background: rgba(0, 0, 0, 0.26);
@@ -11993,28 +11995,37 @@ body {
   box-shadow: none;
 }
 .alain-default__search .ant-input,
-.alain-default__search .ant-input-group-addon {
+.alain-default__search .ant-input-group-addon,
+.alain-default__search .ant-input-affix-wrapper {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.2);
   border: none;
 }
 .alain-default__search .ant-input::placeholder,
-.alain-default__search .ant-input-group-addon::placeholder {
+.alain-default__search .ant-input-group-addon::placeholder,
+.alain-default__search .ant-input-affix-wrapper::placeholder {
   color: #fff;
 }
-.alain-default__search .ant-input-group-addon i {
+.alain-default__search .ant-input-affix-wrapper .ant-input {
+  background-color: transparent;
+}
+.alain-default__search .ant-input-group-addon i,
+.alain-default__search .ant-input-affix-wrapper i {
   color: #fff;
 }
 .alain-default__search-focus .ant-input,
-.alain-default__search-focus .ant-input-group-addon {
+.alain-default__search-focus .ant-input-group-addon,
+.alain-default__search-focus .ant-input-affix-wrapper {
   color: #595959;
   background-color: #f3f3f3;
 }
 .alain-default__search-focus .ant-input::placeholder,
-.alain-default__search-focus .ant-input-group-addon::placeholder {
+.alain-default__search-focus .ant-input-group-addon::placeholder,
+.alain-default__search-focus .ant-input-affix-wrapper::placeholder {
   color: #595959;
 }
-.alain-default__search-focus .ant-input-group-addon i {
+.alain-default__search-focus .ant-input-group-addon i,
+.alain-default__search-focus .ant-input-affix-wrapper i {
   color: #595959;
 }
 .alain-default__aside {
@@ -18832,7 +18843,7 @@ fieldset {
   box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
 }
 .sf__optional {
-  color: rgba(0, 0, 0, 0.45);
+  color: rgba(0, 0, 0, 0.35);
 }
 .sf__array-container nz-card .sf__array-remove {
   background: rgba(0, 0, 0, 0.26);
@@ -22790,28 +22801,37 @@ body {
   box-shadow: none;
 }
 .alain-default__search .ant-input,
-.alain-default__search .ant-input-group-addon {
+.alain-default__search .ant-input-group-addon,
+.alain-default__search .ant-input-affix-wrapper {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.2);
   border: none;
 }
 .alain-default__search .ant-input::placeholder,
-.alain-default__search .ant-input-group-addon::placeholder {
+.alain-default__search .ant-input-group-addon::placeholder,
+.alain-default__search .ant-input-affix-wrapper::placeholder {
   color: #fff;
 }
-.alain-default__search .ant-input-group-addon i {
+.alain-default__search .ant-input-affix-wrapper .ant-input {
+  background-color: transparent;
+}
+.alain-default__search .ant-input-group-addon i,
+.alain-default__search .ant-input-affix-wrapper i {
   color: #fff;
 }
 .alain-default__search-focus .ant-input,
-.alain-default__search-focus .ant-input-group-addon {
+.alain-default__search-focus .ant-input-group-addon,
+.alain-default__search-focus .ant-input-affix-wrapper {
   color: #595959;
   background-color: #f3f3f3;
 }
 .alain-default__search-focus .ant-input::placeholder,
-.alain-default__search-focus .ant-input-group-addon::placeholder {
+.alain-default__search-focus .ant-input-group-addon::placeholder,
+.alain-default__search-focus .ant-input-affix-wrapper::placeholder {
   color: #595959;
 }
-.alain-default__search-focus .ant-input-group-addon i {
+.alain-default__search-focus .ant-input-group-addon i,
+.alain-default__search-focus .ant-input-affix-wrapper i {
   color: #595959;
 }
 .alain-default__aside {

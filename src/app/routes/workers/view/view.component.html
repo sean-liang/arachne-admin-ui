@@ -7,9 +7,10 @@
   <sv label="Token" col="1">{{ i.token }}</sv>
   <sv label="Name" col="1">{{ i.name }}</sv>
   <sv label="Status">{{ i.status | fanyi: 'worker.status' }}</sv>
-  <sv label="Engine">{{ i.engine | fanyi: 'worker.engine' }}</sv>
+  <sv label="Protocol">{{ i.protocol | fanyi: 'worker.protocol' }}</sv>
   <sv label="Tags" col="1">{{ i.tags }}</sv>
-  <sv label="Batch Size" col="1">{{ i.batchSize }}</sv>
+  <sv label="Managed">{{ i.managed ? 'Yes' : 'No' }}</sv>
+  <sv label="Batch Size">{{ i.batchSize }}</sv>
   <sv label="Last Request IP">{{ i.lastRequestIp }}</sv>
   <sv label="Last Request Time">{{ i.lastRequestAt | date: 'yyyy-MM-dd HH:mm:ss' }}</sv>
   <sv label="Create Time">{{ i.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}</sv>

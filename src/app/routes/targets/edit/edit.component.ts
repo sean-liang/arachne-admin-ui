@@ -63,7 +63,7 @@ export class TargetsEditComponent implements OnInit {
     if (val === 'INTERVAL') {
       this.targetForm.controls.repetitionConfig.setValue('60');
     } else if (val === 'CRON') {
-      this.targetForm.controls.repetitionConfig.setValue('0 0 0 * * * *');
+      this.targetForm.controls.repetitionConfig.setValue('0 0 * * * ');
     } else {
       this.targetForm.controls.repetitionConfig.setValue('');
     }
